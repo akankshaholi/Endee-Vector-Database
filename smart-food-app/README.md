@@ -105,7 +105,12 @@ Ensure the server is running at `http://localhost:8080` before starting the back
 
 ## Screenshots
 
-*(Add screenshots here showing the search page, recommendations, and results)*
+Below are some sample outputs from the application:
+
+![Home Page](screenshots/home.png)
+![Search Results](screenshots/search.png)
+![Recommendations](screenshots/recommend.png)
+![Veg Filter](screenshots/filter.png)
 
 ## Future Improvements
 
