@@ -51,6 +51,20 @@ Endee is an open-source vector database. Here is how it fits into this project:
 
 ---
 
+## Architectural Flow
+
+```mermaid
+graph LR
+    A[User Query] --> B[Flask API]
+    B --> C[Sentence Transformer]
+    C --> D[Endee Vector DB]
+    D --> E[Semantic Results]
+    E --> F[Hybrid Re-ranker]
+    F --> G[Interactive UI]
+```
+
+---
+
 ## Project Structure
 
 ```
