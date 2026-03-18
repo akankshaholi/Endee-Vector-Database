@@ -1,0 +1,8 @@
+flask
+flask-cors
+requests
+sentence-transformers
+numpy
+msgpack
+torch
+scipy
