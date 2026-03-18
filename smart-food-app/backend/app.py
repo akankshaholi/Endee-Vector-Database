@@ -7,6 +7,10 @@ import os
 import sys
 import numpy as np
 from endee_client import EndeeClient
+from dotenv import load_dotenv
+
+# Load environment variables
+load_dotenv()
 
 app = Flask(__name__)
 CORS(app)
@@ -37,9 +41,10 @@ swagger = Swagger(app, config=swagger_config, template=swagger_template)
 
 # --- Endee Integration Configuration ---
 ENDEE_URL = os.getenv("ENDEE_URL", "http://localhost:8080")
-COLLECTION_NAME = "food_items"
+ENDEE_TOKEN = os.getenv("ENDEE_TOKEN", "endee_token")
+COLLECTION_NAME = os.getenv("COLLECTION_NAME", "food_items")
 
-client = EndeeClient(base_url=ENDEE_URL)
+client = EndeeClient(base_url=ENDEE_URL, auth_token=ENDEE_TOKEN)
 
 # Verification: Ensure Endee is running before starting the app
 if not client.check_health():
@@ -506,4 +511,6 @@ def suggestions():
 
 if __name__ == '__main__':
     init_db()
-    app.run(port=5000, debug=True)
+    port = int(os.getenv("PORT", 5000))
+    debug = os.getenv("FLASK_ENV", "development") == "development"
+    app.run(port=port, debug=debug)

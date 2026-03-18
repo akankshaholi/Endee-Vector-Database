@@ -4,10 +4,14 @@ import json
 import os
 import time
 import requests
+from dotenv import load_dotenv
 
-ENDEE_URL = "http://localhost:8080"
-ENDEE_TOKEN = "endee_token"
-COLLECTION_NAME = "food_items"
+# Load environment variables
+load_dotenv()
+
+ENDEE_URL = os.getenv("ENDEE_URL", "http://localhost:8080")
+ENDEE_TOKEN = os.getenv("ENDEE_TOKEN", "endee_token")
+COLLECTION_NAME = os.getenv("COLLECTION_NAME", "food_items")
 
 client = EndeeClient(base_url=ENDEE_URL, auth_token=ENDEE_TOKEN)
 model = SentenceTransformer('all-MiniLM-L6-v2')
